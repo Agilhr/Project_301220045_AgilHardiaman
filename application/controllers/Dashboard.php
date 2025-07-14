@@ -37,4 +37,74 @@ class Dashboard extends CI_Controller {
     public function simulasi() {
         $this->load->view('simulasi');
     }
+
+    public function challenge_quiz() {
+        $questions = [
+            [
+                'question' => 'Apa itu investasi?',
+                'choices' => ['A. Menyimpan uang di bawah bantal', 'B. Menanamkan modal untuk mendapatkan keuntungan', 'C. Membelanjakan seluruh pendapatan', 'D. Membayar utang'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Instrumen investasi berikut yang paling berisiko adalah?',
+                'choices' => ['A. Deposito', 'B. Obligasi', 'C. Saham', 'D. Tabungan'],
+                'answer' => 'C'
+            ],
+            [
+                'question' => 'Apa tujuan utama melakukan diversifikasi investasi?',
+                'choices' => ['A. Memaksimalkan risiko', 'B. Mengurangi risiko', 'C. Mengurangi keuntungan', 'D. Menghindari pajak'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Reksa dana dikelola oleh?',
+                'choices' => ['A. Investor', 'B. Manajer Investasi', 'C. Bank', 'D. Pemerintah'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Apa itu return investasi?',
+                'choices' => ['A. Modal awal', 'B. Keuntungan atau kerugian dari investasi', 'C. Jumlah pinjaman', 'D. Pajak investasi'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Salah satu keuntungan investasi emas adalah?',
+                'choices' => ['A. Nilai stabil jangka panjang', 'B. Mudah rusak', 'C. Tidak bisa dijual', 'D. Tidak ada risiko'],
+                'answer' => 'A'
+            ],
+            [
+                'question' => 'Apa yang dimaksud dengan inflasi?',
+                'choices' => ['A. Penurunan harga barang', 'B. Kenaikan harga barang secara umum', 'C. Penurunan nilai uang', 'D. Kenaikan nilai investasi'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Investasi yang cocok untuk pemula adalah?',
+                'choices' => ['A. Saham spekulatif', 'B. Reksa dana pasar uang', 'C. Forex', 'D. Properti mewah'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Apa itu dividen?',
+                'choices' => ['A. Bunga bank', 'B. Pembagian keuntungan perusahaan kepada pemegang saham', 'C. Pajak investasi', 'D. Biaya transaksi'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => 'Sebelum berinvestasi, sebaiknya?',
+                'choices' => ['A. Meminjam uang sebanyak-banyaknya', 'B. Membaca dan memahami profil risiko', 'C. Mengikuti tren tanpa analisa', 'D. Menjual aset penting'],
+                'answer' => 'B'
+            ],
+        ];
+        $score = null;
+        if ($this->input->method() === 'post') {
+            $user_answers = $this->input->post('answers');
+            $score = 0;
+            foreach ($questions as $i => $q) {
+                if (isset($user_answers[$i]) && strtoupper($user_answers[$i]) === $q['answer']) {
+                    $score++;
+                }
+            }
+        }
+        $data = [
+            'questions' => $questions,
+            'score' => $score
+        ];
+        $this->load->view('challenge_quiz', $data);
+    }
 } 
