@@ -114,7 +114,7 @@
             </div>
             <?php endif; ?>
             <div class="quick-actions">
-                <a href="#simulasi" class="btn btn-success">Mulai Simulasi</a>
+                <a href="<?php echo base_url('index.php/dashboard/simulasi'); ?>" class="btn btn-success">Mulai Simulasi</a>
                 <a href="#challenge" class="btn btn-warning text-white">Ikuti Challenge</a>
                 <a href="#artikel" class="btn btn-primary">Baca Artikel</a>
                 <a href="#webinar" class="btn btn-info text-white">Daftar Webinar</a>
