@@ -283,4 +283,28 @@ class Admin extends CI_Controller {
         $this->User_model->update($id, ['password' => $new_password]);
         redirect('admin/users');
     }
+
+    public function reporting() {
+        $this->load->model('User_model');
+        $this->load->model('Article_model');
+        $this->load->model('Video_model');
+        $this->load->model('Webinar_model');
+        $data['stat'] = [
+            'user' => count($this->User_model->get_all()),
+            'artikel' => count($this->Article_model->get_all()),
+            'video' => count($this->Video_model->get_all()),
+            'webinar' => count($this->Webinar_model->get_all()),
+        ];
+        // Dummy data aktivitas dan popular content
+        $data['aktivitas'] = [
+            ['username'=>'user1','aktivitas'=>'Baca artikel','waktu'=>'2024-07-14 10:00'],
+            ['username'=>'user2','aktivitas'=>'Ikut webinar','waktu'=>'2024-07-14 11:00'],
+        ];
+        $data['populer'] = [
+            ['tipe'=>'Artikel','judul'=>'Cara Investasi Saham','jumlah'=>1200],
+            ['tipe'=>'Video','judul'=>'Tutorial Reksa Dana','jumlah'=>900],
+            ['tipe'=>'Webinar','judul'=>'Webinar Emas','jumlah'=>300],
+        ];
+        $this->load->view('admin_reporting', $data);
+    }
 } 

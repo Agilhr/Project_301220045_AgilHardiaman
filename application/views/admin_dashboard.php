@@ -115,9 +115,15 @@
                 </div>
             <?php elseif($menu=='report'): ?>
                 <div class="admin-title">Reporting</div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Statistik website: jumlah user, artikel, video, webinar, dsb.</div></div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Tabel aktivitas user.</div></div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Daftar artikel/video/webinar terpopuler.</div></div>
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <div class="card h-100"><div class="card-body text-center">
+                            <h5 class="card-title">Statistik & Laporan</h5>
+                            <p class="card-text">Lihat statistik website, aktivitas user, dan konten terpopuler.</p>
+                            <a href="<?php echo base_url('index.php/admin/reporting'); ?>" class="btn btn-primary">Lihat Reporting</a>
+                        </div></div>
+                    </div>
+                </div>
             <?php endif; ?>
         </div>
     </div>
