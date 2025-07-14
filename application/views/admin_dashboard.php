@@ -104,7 +104,15 @@
                 </div>
             <?php elseif($menu=='user'): ?>
                 <div class="admin-title">User Management</div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar user, tombol aktivasi/deaktivasi, reset password.</div></div>
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <div class="card h-100"><div class="card-body text-center">
+                            <h5 class="card-title">Daftar User</h5>
+                            <p class="card-text">Kelola semua user, aktivasi/deaktivasi, dan reset password.</p>
+                            <a href="<?php echo base_url('index.php/admin/users'); ?>" class="btn btn-primary">Kelola User</a>
+                        </div></div>
+                    </div>
+                </div>
             <?php elseif($menu=='report'): ?>
                 <div class="admin-title">Reporting</div>
                 <div class="card mb-3"><div class="card-body">[Dummy] Statistik website: jumlah user, artikel, video, webinar, dsb.</div></div>

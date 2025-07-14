@@ -261,4 +261,26 @@ class Admin extends CI_Controller {
         $this->Category_model->delete($id);
         redirect('admin/categories');
     }
+
+    public function users() {
+        $this->load->model('User_model');
+        $data['users'] = $this->User_model->get_all();
+        $this->load->view('admin_users', $data);
+    }
+    public function activate_user($id) {
+        $this->load->model('User_model');
+        $this->User_model->update($id, ['is_active' => 1]);
+        redirect('admin/users');
+    }
+    public function deactivate_user($id) {
+        $this->load->model('User_model');
+        $this->User_model->update($id, ['is_active' => 0]);
+        redirect('admin/users');
+    }
+    public function reset_password($id) {
+        $this->load->model('User_model');
+        $new_password = password_hash('user123', PASSWORD_DEFAULT);
+        $this->User_model->update($id, ['password' => $new_password]);
+        redirect('admin/users');
+    }
 } 
