@@ -7,26 +7,84 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <style>
         body { background: linear-gradient(135deg, #3498db 0%, #27ae60 100%); min-height: 100vh; }
-        .admin-card { max-width: 500px; margin: 60px auto; border-radius: 16px; box-shadow: 0 8px 32px rgba(44,62,80,0.15); background: #fff; padding: 32px 28px 24px 28px; }
-        .logo-text { font-size: 2rem; font-weight: bold; color: #3498db; letter-spacing: 1px; margin-bottom: 8px; }
-        .admin-title { font-size: 1.1rem; color: #2c3e50; margin-bottom: 18px; }
-        .btn-danger { font-weight: 600; letter-spacing: 1px; }
+        .admin-layout { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: 220px;
+            background: #2c3e50;
+            color: #fff;
+            padding: 32px 0 0 0;
+            min-height: 100vh;
+        }
+        .sidebar .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 0;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #3498db;
+            color: #fff;
+        }
+        .main-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 40px 32px 32px 32px;
+        }
+        .admin-title { font-size: 1.3rem; color: #2c3e50; margin-bottom: 18px; font-weight: 600; }
+        .logout-btn { margin-top: 32px; }
+        @media (max-width: 768px) {
+            .admin-layout { flex-direction: column; }
+            .sidebar { width: 100%; min-height: auto; padding: 16px 0 0 0; }
+            .main-content { padding: 18px 8px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="admin-card mt-5">
-            <div class="text-center mb-3">
-                <div class="logo-text">Money Mentor Pro</div>
+    <div class="admin-layout">
+        <div class="sidebar">
+            <div class="logo-text">Money Mentor Pro</div>
+            <nav class="nav flex-column">
+                <a class="nav-link<?php echo (!isset($_GET['menu'])||$_GET['menu']=='dashboard')?' active':''; ?>" href="?menu=dashboard">Dashboard</a>
+                <a class="nav-link<?php echo (isset($_GET['menu'])&&$_GET['menu']=='content')?' active':''; ?>" href="?menu=content">Content Management</a>
+                <a class="nav-link<?php echo (isset($_GET['menu'])&&$_GET['menu']=='user')?' active':''; ?>" href="?menu=user">User Management</a>
+                <a class="nav-link<?php echo (isset($_GET['menu'])&&$_GET['menu']=='report')?' active':''; ?>" href="?menu=report">Reporting</a>
+                <a class="nav-link logout-btn" href="<?php echo base_url('index.php/admin/logout'); ?>">Logout Admin</a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <?php $menu = isset($_GET['menu']) ? $_GET['menu'] : 'dashboard'; ?>
+            <?php if($menu=='dashboard'): ?>
                 <div class="admin-title">Admin Dashboard</div>
-            </div>
-            <div class="alert alert-success text-center">Akses admin berhasil! Selamat datang, <b>Admin</b>.</div>
-            <div class="text-center mb-3">
-                <a href="<?php echo base_url('index.php/admin/logout'); ?>" class="btn btn-danger">Logout Admin</a>
-            </div>
-            <div class="text-center">
-                <a href="<?php echo base_url('index.php/dashboard'); ?>">Kembali ke Dashboard User</a>
-            </div>
+                <div class="alert alert-success">Selamat datang di halaman admin Money Mentor Pro!</div>
+                <ul>
+                    <li>Kelola artikel, video, kategori, webinar</li>
+                    <li>Kelola user</li>
+                    <li>Lihat statistik & laporan</li>
+                </ul>
+            <?php elseif($menu=='content'): ?>
+                <div class="admin-title">Content Management</div>
+                <div class="mb-3"><b>Artikel</b> | <b>Video Tutorial</b> | <b>Kategori</b> | <b>Webinar</b></div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar artikel, tombol tambah/edit/hapus artikel.</div></div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar video tutorial, tombol upload/edit/hapus video.</div></div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar kategori, tombol tambah/edit/hapus kategori.</div></div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar webinar, tombol tambah/edit/hapus webinar.</div></div>
+            <?php elseif($menu=='user'): ?>
+                <div class="admin-title">User Management</div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar user, tombol aktivasi/deaktivasi, reset password.</div></div>
+            <?php elseif($menu=='report'): ?>
+                <div class="admin-title">Reporting</div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Statistik website: jumlah user, artikel, video, webinar, dsb.</div></div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Tabel aktivitas user.</div></div>
+                <div class="card mb-3"><div class="card-body">[Dummy] Daftar artikel/video/webinar terpopuler.</div></div>
+            <?php endif; ?>
         </div>
     </div>
 </body>
