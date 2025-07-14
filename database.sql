@@ -26,6 +26,7 @@ CREATE TABLE users (
     is_verified TINYINT(1) DEFAULT 0,
     email_verified_at TIMESTAMP NULL,
     remember_token VARCHAR(100) NULL,
+    role ENUM('admin','user') NOT NULL DEFAULT 'user',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
