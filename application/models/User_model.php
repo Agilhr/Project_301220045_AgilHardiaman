@@ -11,4 +11,8 @@ class User_model extends CI_Model {
         $this->db->or_where('email', $identity);
         return $this->db->get('users')->row_array();
     }
+
+    public function get_all() {
+        return $this->db->get('users')->result_array();
+    }
 } 

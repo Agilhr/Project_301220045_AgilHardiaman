@@ -72,10 +72,36 @@
             <?php elseif($menu=='content'): ?>
                 <div class="admin-title">Content Management</div>
                 <div class="mb-3"><b>Artikel</b> | <b>Video Tutorial</b> | <b>Kategori</b> | <b>Webinar</b></div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar artikel, tombol tambah/edit/hapus artikel.</div></div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar video tutorial, tombol upload/edit/hapus video.</div></div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar kategori, tombol tambah/edit/hapus kategori.</div></div>
-                <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar webinar, tombol tambah/edit/hapus webinar.</div></div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100"><div class="card-body text-center">
+                            <h5 class="card-title">Artikel</h5>
+                            <p class="card-text">Kelola semua artikel di platform.</p>
+                            <a href="<?php echo base_url('index.php/admin/articles'); ?>" class="btn btn-primary">Kelola Artikel</a>
+                        </div></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100"><div class="card-body text-center">
+                            <h5 class="card-title">Video Tutorial</h5>
+                            <p class="card-text">Kelola video tutorial edukasi.</p>
+                            <a href="<?php echo base_url('index.php/admin/videos'); ?>" class="btn btn-info">Kelola Video</a>
+                        </div></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100"><div class="card-body text-center">
+                            <h5 class="card-title">Kategori</h5>
+                            <p class="card-text">Kelola kategori artikel & video.</p>
+                            <a href="<?php echo base_url('index.php/admin/categories'); ?>" class="btn btn-success">Kelola Kategori</a>
+                        </div></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100"><div class="card-body text-center">
+                            <h5 class="card-title">Webinar</h5>
+                            <p class="card-text">Kelola event webinar edukasi.</p>
+                            <a href="<?php echo base_url('index.php/admin/webinars'); ?>" class="btn btn-warning text-white">Kelola Webinar</a>
+                        </div></div>
+                    </div>
+                </div>
             <?php elseif($menu=='user'): ?>
                 <div class="admin-title">User Management</div>
                 <div class="card mb-3"><div class="card-body">[Dummy] Tabel daftar user, tombol aktivasi/deaktivasi, reset password.</div></div>
