@@ -213,4 +213,52 @@ class Admin extends CI_Controller {
         $this->Webinar_model->delete($id);
         redirect('admin/webinars');
     }
+
+    public function categories() {
+        $this->load->model('Category_model');
+        $data['categories'] = $this->Category_model->get_all();
+        $this->load->view('admin_categories', $data);
+    }
+    public function add_category() {
+        $this->load->view('admin_category_form');
+    }
+    public function save_category() {
+        $this->load->model('Category_model');
+        $data = [
+            'name' => $this->input->post('name'),
+            'slug' => $this->input->post('slug'),
+            'description' => $this->input->post('description'),
+            'icon' => $this->input->post('icon'),
+            'color' => $this->input->post('color'),
+            'is_active' => $this->input->post('is_active'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        $this->Category_model->insert($data);
+        redirect('admin/categories');
+    }
+    public function edit_category($id) {
+        $this->load->model('Category_model');
+        $data['category'] = $this->Category_model->get_by_id($id);
+        $this->load->view('admin_category_form', $data);
+    }
+    public function update_category($id) {
+        $this->load->model('Category_model');
+        $data = [
+            'name' => $this->input->post('name'),
+            'slug' => $this->input->post('slug'),
+            'description' => $this->input->post('description'),
+            'icon' => $this->input->post('icon'),
+            'color' => $this->input->post('color'),
+            'is_active' => $this->input->post('is_active'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        $this->Category_model->update($id, $data);
+        redirect('admin/categories');
+    }
+    public function delete_category($id) {
+        $this->load->model('Category_model');
+        $this->Category_model->delete($id);
+        redirect('admin/categories');
+    }
 } 
