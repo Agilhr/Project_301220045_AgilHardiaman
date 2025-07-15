@@ -123,4 +123,20 @@ class Dashboard extends CI_Controller {
         $data['article'] = $article;
         $this->load->view('article_detail', $data);
     }
+
+    public function webinars() {
+        $this->load->model('Webinar_model');
+        $data['webinars'] = $this->Webinar_model->get_all();
+        $this->load->view('webinars', $data);
+    }
+
+    public function webinar_detail($id) {
+        $this->load->model('Webinar_model');
+        $webinar = $this->Webinar_model->get_by_id($id);
+        if (!$webinar) {
+            show_404();
+        }
+        $data['webinar'] = $webinar;
+        $this->load->view('webinar_detail', $data);
+    }
 } 

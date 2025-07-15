@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['dashboard/challenge_quiz'] = 'dashboard/challenge_quiz';
 $route['dashboard/articles'] = 'dashboard/articles';
 $route['dashboard/article_detail/(:num)'] = 'dashboard/article_detail/$1';
+$route['dashboard/webinars'] = 'dashboard/webinars';
+$route['dashboard/webinar_detail/(:num)'] = 'dashboard/webinar_detail/$1';
