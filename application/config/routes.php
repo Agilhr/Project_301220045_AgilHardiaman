@@ -53,3 +53,5 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dashboard/challenge_quiz'] = 'dashboard/challenge_quiz';
+$route['dashboard/articles'] = 'dashboard/articles';
+$route['dashboard/article_detail/(:num)'] = 'dashboard/article_detail/$1';

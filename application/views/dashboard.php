@@ -116,7 +116,7 @@
             <div class="quick-actions">
                 <a href="<?php echo base_url('index.php/dashboard/simulasi'); ?>" class="btn btn-success">Mulai Simulasi</a>
                 <a href="<?php echo base_url('index.php/dashboard/challenge_quiz'); ?>" class="btn btn-warning text-white">Ikuti Challenge</a>
-                <a href="#artikel" class="btn btn-primary">Baca Artikel</a>
+                <a href="<?php echo base_url('index.php/dashboard/articles'); ?>" class="btn btn-primary">Baca Artikel</a>
                 <a href="#webinar" class="btn btn-info text-white">Daftar Webinar</a>
             </div>
             <div class="row">

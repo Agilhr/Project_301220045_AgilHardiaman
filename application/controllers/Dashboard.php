@@ -107,4 +107,20 @@ class Dashboard extends CI_Controller {
         ];
         $this->load->view('challenge_quiz', $data);
     }
+
+    public function articles() {
+        $this->load->model('Article_model');
+        $data['articles'] = $this->Article_model->get_all();
+        $this->load->view('articles', $data);
+    }
+
+    public function article_detail($id) {
+        $this->load->model('Article_model');
+        $article = $this->Article_model->get_by_id($id);
+        if (!$article) {
+            show_404();
+        }
+        $data['article'] = $article;
+        $this->load->view('article_detail', $data);
+    }
 } 
