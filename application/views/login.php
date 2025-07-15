@@ -63,7 +63,7 @@
         <div class="login-card mt-5">
             <div class="text-center mb-3">
                 <div class="logo-text">Money Mentor Pro</div>
-                <div class="login-title">Login ke Akun Anda</div>
+                <div class="login-title">Kelola Finansial Cerdas</div>
             </div>
             <?php if(validation_errors()): ?>
                 <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
